@@ -54,57 +54,7 @@ license: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0
 
 ## Example: The Same Data, Two Ways
 
-:::::::::::::: {.columns}
-::: {.column width="50%"}
-
-### Relational
-
-**Users**
-
-| ID | First | Last |
-|----|-------|------|
-| 1 | Shane | Johnson |
-
-**User Skills**
-
-| User ID | Skill |
-|---------|-------|
-| 1 | Big Data |
-| 1 | Java |
-| 1 | NoSQL |
-
-**User Experience**
-
-| User ID | Role | Company |
-|---------|------|---------|
-| 1 | Technical Mktg | Red Hat |
-| 1 | Product Mktg | Couchbase |
-
-:::
-::: {.column width="50%"}
-
-### Document (JSON)
-
-```json
-{
-  "firstName": "Shane",
-  "lastName": "Johnson",
-  "skills": ["Big Data", "Java", "NoSQL"],
-  "experience": [
-    {
-      "role": "Technical Marketing",
-      "company": "Red Hat"
-    },
-    {
-      "role": "Product Marketing",
-      "company": "Couchbase"
-    }
-  ]
-}
-```
-
-:::
-::::::::::::::
+![Relational tables vs. a JSON document](graphics/relational-vs-document.svg){title="Adapted from Couchbase."}
 
 Example adapted from [Couchbase](https://adtmag.com/articles/2016/06/22/couchbase-4-5.aspx).
 

@@ -21,9 +21,10 @@ Source files:
 
 - `sql_nosql.md`—the slide content (edit this)
 - `header.html`—CSS and JavaScript injected into the document `<head>`
+- `graphics/`—figures
 
 The `make deploy` target is for the author's own web host and relies on an ssh alias (`compsci`) defined in `~/.ssh/config`; adopters can ignore it.
 
 ## Attribution
 
-Based on the "[SQL vs NoSQL](https://s3.amazonaws.com/files.commons.gc.cuny.edu/wp-content/blogs.dir/2880/files/2021/05/SQL_NoSQL.pdf)" slides from Software Engineering (CSCI 40500/77100), Hunter College, Spring 2021. The relational-vs.-document example is adapted from [Couchbase](https://adtmag.com/articles/2016/06/22/couchbase-4-5.aspx) and redrawn as text.
+Based on the "[SQL vs NoSQL](https://s3.amazonaws.com/files.commons.gc.cuny.edu/wp-content/blogs.dir/2880/files/2021/05/SQL_NoSQL.pdf)" slides from Software Engineering (CSCI 40500/77100), Hunter College, Spring 2021. The relational-vs.-document example is adapted from [Couchbase](https://adtmag.com/articles/2016/06/22/couchbase-4-5.aspx) and redrawn as `graphics/relational-vs-document.svg`.

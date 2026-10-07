@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 580" width="1120" height="580" role="img" aria-label="The same user record stored as three relational tables and as one JSON document, with arrows linking each table to its part of the document.">
+<title>Relational tables vs. a JSON document</title>
+<style>
+text { font-family: "Helvetica Neue", Arial, sans-serif; fill: #222; }
+.title { font-size: 20px; font-weight: bold; }
+.th { font-size: 18px; font-weight: bold; font-style: italic; text-anchor: middle; }
+.td { font-size: 18px; text-anchor: middle; }
+.code { font-family: "DejaVu Sans Mono", Menlo, Consolas, monospace; font-size: 18px; }
+.label { font-size: 16px; font-weight: bold; letter-spacing: 1px; text-anchor: middle; fill: #555; }
+</style>
+<defs><marker id="h" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4a90d9"/></marker></defs>
+<rect width="1120" height="580" fill="#fff"/>
+<rect x="20" y="20" width="400" height="118" rx="6" fill="#f6f8fa" stroke="#bbb"/>
+<text x="30" y="48" class="title">USERS</text>
+<rect x="30" y="60" width="380" height="68" fill="#fff" stroke="#999"/>
+<rect x="30" y="60" width="380" height="34" fill="#ececec" stroke="#999"/>
+<text x="70.0" y="83" class="th">ID</text>
+<text x="70.0" y="117" class="td">1</text>
+<line x1="110" y1="60" x2="110" y2="128" stroke="#999"/>
+<text x="180.0" y="83" class="th">First</text>
+<text x="180.0" y="117" class="td">Shane</text>
+<line x1="250" y1="60" x2="250" y2="128" stroke="#999"/>
+<text x="330.0" y="83" class="th">Last</text>
+<text x="330.0" y="117" class="td">Johnson</text>
+<line x1="30" y1="94" x2="410" y2="94" stroke="#999"/>
+<rect x="20" y="158" width="300" height="186" rx="6" fill="#f6f8fa" stroke="#bbb"/>
+<text x="30" y="186" class="title">USER SKILLS</text>
+<rect x="30" y="198" width="280" height="136" fill="#fff" stroke="#999"/>
+<rect x="30" y="198" width="280" height="34" fill="#ececec" stroke="#999"/>
+<text x="85.0" y="221" class="th">User ID</text>
+<text x="85.0" y="255" class="td">1</text>
+<text x="85.0" y="289" class="td">1</text>
+<text x="85.0" y="323" class="td">1</text>
+<line x1="140" y1="198" x2="140" y2="334" stroke="#999"/>
+<text x="225.0" y="221" class="th">Skill Name</text>
+<text x="225.0" y="255" class="td">Big Data</text>
+<text x="225.0" y="289" class="td">Java</text>
+<text x="225.0" y="323" class="td">NoSQL</text>
+<line x1="30" y1="232" x2="310" y2="232" stroke="#999"/>
+<line x1="30" y1="266" x2="310" y2="266" stroke="#999"/>
+<line x1="30" y1="300" x2="310" y2="300" stroke="#999"/>
+<rect x="20" y="364" width="460" height="152" rx="6" fill="#f6f8fa" stroke="#bbb"/>
+<text x="30" y="392" class="title">USER EXPERIENCE</text>
+<rect x="30" y="404" width="440" height="102" fill="#fff" stroke="#999"/>
+<rect x="30" y="404" width="440" height="34" fill="#ececec" stroke="#999"/>
+<text x="80.0" y="427" class="th">User ID</text>
+<text x="80.0" y="461" class="td">1</text>
+<text x="80.0" y="495" class="td">1</text>
+<line x1="130" y1="404" x2="130" y2="506" stroke="#999"/>
+<text x="225.0" y="427" class="th">Role</text>
+<text x="225.0" y="461" class="td">Technical Mktg</text>
+<text x="225.0" y="495" class="td">Product Mktg</text>
+<line x1="320" y1="404" x2="320" y2="506" stroke="#999"/>
+<text x="395.0" y="427" class="th">Company</text>
+<text x="395.0" y="461" class="td">Red Hat</text>
+<text x="395.0" y="495" class="td">Couchbase</text>
+<line x1="30" y1="438" x2="470" y2="438" stroke="#999"/>
+<line x1="30" y1="472" x2="470" y2="472" stroke="#999"/>
+<rect x="600" y="20" width="500" height="496" rx="6" fill="#f6f8fa" stroke="#bbb"/>
+<text x="616" y="60" class="code" xml:space="preserve">{</text>
+<text x="616" y="90" class="code" xml:space="preserve">  "firstName": "Shane",</text>
+<text x="616" y="120" class="code" xml:space="preserve">  "lastName": "Johnson",</text>
+<text x="616" y="150" class="code" xml:space="preserve">  "skills": ["Big Data", "Java", "NoSQL"],</text>
+<text x="616" y="180" class="code" xml:space="preserve">  "experience": [</text>
+<text x="616" y="210" class="code" xml:space="preserve">    {</text>
+<text x="616" y="240" class="code" xml:space="preserve">      "role": "Technical Marketing",</text>
+<text x="616" y="270" class="code" xml:space="preserve">      "company": "Red Hat"</text>
+<text x="616" y="300" class="code" xml:space="preserve">    },</text>
+<text x="616" y="330" class="code" xml:space="preserve">    {</text>
+<text x="616" y="360" class="code" xml:space="preserve">      "role": "Product Marketing",</text>
+<text x="616" y="390" class="code" xml:space="preserve">      "company": "Couchbase"</text>
+<text x="616" y="420" class="code" xml:space="preserve">    }</text>
+<text x="616" y="450" class="code" xml:space="preserve">  ]</text>
+<text x="616" y="480" class="code" xml:space="preserve">}</text>
+<path d="M424,111.0 C518.6,111.0 501.4,99.0 596,99.0" fill="none" stroke="#4a90d9" stroke-width="2.5" marker-start="url(#h)" marker-end="url(#h)"/>
+<path d="M324,249.0 C473.6,249.0 446.4,144.0 596,144.0" fill="none" stroke="#4a90d9" stroke-width="2.5" marker-start="url(#h)" marker-end="url(#h)"/>
+<path d="M324,283.0 C473.6,283.0 446.4,144.0 596,144.0" fill="none" stroke="#4a90d9" stroke-width="2.5" marker-start="url(#h)" marker-end="url(#h)"/>
+<path d="M324,317.0 C473.6,317.0 446.4,144.0 596,144.0" fill="none" stroke="#4a90d9" stroke-width="2.5" marker-start="url(#h)" marker-end="url(#h)"/>
+<path d="M484,455.0 C545.6,455.0 534.4,249.0 596,249.0" fill="none" stroke="#4a90d9" stroke-width="2.5" marker-start="url(#h)" marker-end="url(#h)"/>
+<path d="M484,489.0 C545.6,489.0 534.4,369.0 596,369.0" fill="none" stroke="#4a90d9" stroke-width="2.5" marker-start="url(#h)" marker-end="url(#h)"/>
+<text x="250" y="558" class="label">RELATIONAL DATABASE</text>
+<text x="850.0" y="558" class="label">JSON DOCUMENT</text>
+</svg>
