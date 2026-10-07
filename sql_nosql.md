@@ -1,10 +1,10 @@
 ---
 title: "SQL vs. NoSQL: Relational vs. Non-Relational Databases"
-author: Raffi Khatchadourian (based on a "[SQL vs NoSQL](https://s3.amazonaws.com/files.commons.gc.cuny.edu/wp-content/blogs.dir/2880/files/2021/05/SQL_NoSQL.pdf)" student presentation from CSCI 40500/77100, City University of New York (CUNY) Hunter College, Spring 2021, and on "[Graph Databases](https://www.ksi.mff.cuni.cz/~svoboda/courses/2015-1-NDBI040/lectures/Lecture-10-Graph.pdf)" by [Irena Holubová](https://www.ksi.mff.cuni.cz/~svoboda/courses/2015-1-NDBI040/lectures/Lecture-10-Graph.pdf), Charles University, 2015)
+author: Raffi Khatchadourian (based on a "[SQL vs NoSQL][sql-nosql]" student presentation from CSCI 40500/77100, City University of New York (CUNY) Hunter College, Spring 2021, and on "[Graph Databases][holubova]" by [Irena Holubová][holubova], Charles University, 2015)
 date: October 7, 2026
 semester: Fall 2026
 lang: en
-footer: Based on a "[SQL vs NoSQL](https://s3.amazonaws.com/files.commons.gc.cuny.edu/wp-content/blogs.dir/2880/files/2021/05/SQL_NoSQL.pdf)" student presentation from Software Engineering (CSCI 40500/77100), City University of New York (CUNY) Hunter College, Spring 2021, and on "[Graph Databases](https://www.ksi.mff.cuni.cz/~svoboda/courses/2015-1-NDBI040/lectures/Lecture-10-Graph.pdf)" by [Irena Holubová](https://www.ksi.mff.cuni.cz/~svoboda/courses/2015-1-NDBI040/lectures/Lecture-10-Graph.pdf), Charles University, 2015
+footer: Based on a "[SQL vs NoSQL][sql-nosql]" student presentation from Software Engineering (CSCI 40500/77100), City University of New York (CUNY) Hunter College, Spring 2021, and on "[Graph Databases][holubova]" by [Irena Holubová][holubova], Charles University, 2015
 license: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
 ---
 
@@ -51,8 +51,8 @@ Open-ended. Typical answers: SQLite or PostgreSQL (came with the framework, e.g.
 | SQL | NoSQL |
 |-----|-------|
 | Tables with rows and columns. | Key-value pairs, documents (e.g., JSON), graphs, ... |
-| Relational: links information across tables. | Non-relational: no built-in mechanism to link data. |
-| Structured query language. | No standard query language. |
+| Relational: links information across tables. | Non-relational: no joins; related data is embedded (documents) or linked by edges (graphs). |
+| Structured query language. | No single standard query language. |
 | Static schema. | Dynamic schema. |
 | Supports ACID transactions. | Traditionally limited ACID support. |
 
@@ -128,16 +128,16 @@ Key-value vs. document: the difference is whether the database can see *inside* 
 * Relational databases were traditionally less suited to cloud environments.
 	* Hard to grow and shrink capacity on demand.
 * NoSQL databases fit cloud databases well.
-	* Their defining characteristics (distribution, flexible schema, horizontal scaling) are exactly what cloud databases need.
+	* Their defining characteristics (distribution, horizontal scaling) are exactly what cloud databases need.
 
 > *Note*: Today, managed relational services (e.g., Amazon RDS and Aurora, Google Cloud SQL, Azure SQL Database) are among the most widely used cloud databases. The provider handles replication, failover, backups, and resizing, and some (e.g., Aurora Serverless) grow and shrink capacity on demand.
 
 ## Big Data Handling
 
 * Scaling relational databases to big data takes extra effort.
-	* The solution is scaling and distributing data, either vertically or horizontally.
+	* Options: scale up (bigger machine) or scale out (more machines).
 * Horizontal scaling means *partitioning* data across multiple servers.
-	* Adds complexity and performance costs to these operations.
+	* Adds complexity and performance costs (e.g., queries that span servers).
 * NoSQL databases are *designed* for big data.
 	* They implement methods to improve the performance of storing and retrieving data at scale.
 
@@ -202,7 +202,7 @@ NoSQL databases are well suited for:
 ## Graph Databases
 
 * Store *entities* (nodes) and the *relationships* between them (edges).
-	* Nodes have properties (e.g., `name`).
+	* Nodes and edges have properties (e.g., `name`, `since`).
 	* Edges are directed and have types (e.g., `FRIEND`, `LIKES`, `EMPLOYEE_OF`).
 * Relationships are stored, not computed at query time.
 	* Queries follow edges directly instead of joining tables.
@@ -210,13 +210,13 @@ NoSQL databases are well suited for:
 * Examples: Neo4j, Amazon Neptune, Memgraph, TigerGraph.
 	* Standard query language: GQL (ISO/IEC 39075, 2024).
 
-Adapted from [Holubová](https://www.ksi.mff.cuni.cz/~svoboda/courses/2015-1-NDBI040/lectures/Lecture-10-Graph.pdf).
+Adapted from [Holubová][holubova].
 
 ## Example: A Social Graph
 
 ![A social graph](graphics/social-graph.svg){title="Adapted from Holubová, after Sadalage and Fowler."}
 
-Example adapted from [Holubová](https://www.ksi.mff.cuni.cz/~svoboda/courses/2015-1-NDBI040/lectures/Lecture-10-Graph.pdf), after Sadalage and Fowler's *NoSQL Distilled*.
+Example adapted from [Holubová][holubova], after Sadalage and Fowler's *NoSQL Distilled*.
 
 > Q: Who is employed by BigCo and likes *NoSQL Distilled*?
 
@@ -261,7 +261,7 @@ RETURN p.name;
 * A new kind of relationship usually means a new table in a relational schema; in a graph, it is just a new edge type.
 * Deep traversals (e.g., friends of friends of friends) need one join per hop or recursive SQL (`WITH RECURSIVE`); in Cypher, a path pattern: `(p)-[:FRIEND*1..3]->(f)`.
 
-Adapted from [Holubová](https://www.ksi.mff.cuni.cz/~svoboda/courses/2015-1-NDBI040/lectures/Lecture-10-Graph.pdf).
+Adapted from [Holubová][holubova].
 
 ## Graph Databases: When to Use
 
@@ -277,7 +277,7 @@ Adapted from [Holubová](https://www.ksi.mff.cuni.cz/~svoboda/courses/2015-1-NDB
 * Very large graphs: distributing a graph is hard because edges cross machines (see [Scalability](#scalability)).
 * Simple, tabular data with few relationships: a relational database is simpler.
 
-Adapted from [Holubová](https://www.ksi.mff.cuni.cz/~svoboda/courses/2015-1-NDBI040/lectures/Lecture-10-Graph.pdf).
+Adapted from [Holubová][holubova].
 
 ## Choosing a Database for Your Project
 
@@ -295,13 +295,13 @@ Adapted from [Holubová](https://www.ksi.mff.cuni.cz/~svoboda/courses/2015-1-NDB
 ## Summary
 
 * NoSQL does not use the relational data model, and thus not SQL as its primary language.
-* NoSQL stores large volumes of data.
 * In distributed environments (data spread across machines), NoSQL is designed to keep working.
 	* A fault or failure on one machine need not interrupt the service.
 * Many NoSQL databases are open source and free to use.
 * NoSQL stores records without a fixed schema.
 * NoSQL traditionally relaxes ACID properties.
-* NoSQL scales horizontally, so performance grows roughly linearly with machines.
+* NoSQL scales horizontally by adding machines.
+* Neither is better in general: choose by your data and how you query it; relational is a good default.
 
 ## References
 
@@ -310,6 +310,9 @@ Adapted from [Holubová](https://www.ksi.mff.cuni.cz/~svoboda/courses/2015-1-NDB
 1. Nayak, A., Poriya, A., & Poojary, D. (2013). Type of NoSQL Databases and Its Comparison with Relational Databases. *International Journal of Applied Information Systems*, 5, 16–19.
 1. Padhy, R. P., Patra, M. R., & Satapathy, S. C. (2011). RDBMS to NoSQL: Reviewing Some Next-Generation Non-Relational Database's. *International Journal of Advanced Engineering Sciences and Technologies*, 11(1), 15–30.
 1. [MongoDB](https://www.mongodb.com/).
-1. Holubová, I. (2015). [Graph Databases](https://www.ksi.mff.cuni.cz/~svoboda/courses/2015-1-NDBI040/lectures/Lecture-10-Graph.pdf). Lecture 10, *Big Data Management and NoSQL Databases* (NDBI040), Charles University.
-1. Sadalage, P. J., & Fowler, M. (2012). *NoSQL Distilled: A Brief Guide to the Emerging World of Polyglot Persistence*. Addison-Wesley.
 1. [Why NoSQL Is the Perfect Fit for Agile Development](https://www.dragonspears.com/blog/why-nosql-is-the-perfect-fit-for-agile-development). DragonSpears.
+1. Holubová, I. (2015). [Graph Databases][holubova]. Lecture 10, *Big Data Management and NoSQL Databases* (NDBI040), Charles University.
+1. Sadalage, P. J., & Fowler, M. (2012). *NoSQL Distilled: A Brief Guide to the Emerging World of Polyglot Persistence*. Addison-Wesley.
+
+[sql-nosql]: https://s3.amazonaws.com/files.commons.gc.cuny.edu/wp-content/blogs.dir/2880/files/2021/05/SQL_NoSQL.pdf
+[holubova]: https://www.ksi.mff.cuni.cz/~svoboda/courses/2015-1-NDBI040/lectures/Lecture-10-Graph.pdf
