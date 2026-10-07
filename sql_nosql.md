@@ -188,7 +188,7 @@ NoSQL databases are well suited for:
 ## Choosing a Database for Your Project
 
 * Start with the kind of data your application processes:
-	* Tabular, related data (users, orders, enrollments, ...) → relational database (e.g., PostgreSQL, SQLite).
+	* Tabular, related data (users, orders, enrollments, ...) → relational database (e.g., PostgreSQL, or SQLite for small projects).
 	* Semi-structured records whose fields vary (e.g., JSON) → consider a document database (e.g., MongoDB).
 	* Highly connected data queried by its relationships (e.g., social networks) → consider a graph database (e.g., Neo4j).
 * Then check how you will query it:
