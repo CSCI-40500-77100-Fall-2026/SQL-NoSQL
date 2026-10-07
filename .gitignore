@@ -1,0 +1,5 @@
+*.html
+!header.html
+plantuml-images
+*.swp
+/dist/
