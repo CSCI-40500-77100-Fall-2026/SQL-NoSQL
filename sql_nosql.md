@@ -22,7 +22,7 @@ license: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0
 
 * Big data and cloud computing need databases that serve a *very* large number of users.
 * Distributed data storage is essential for processing large amounts of data.
-	* Think of the web apps run by Google, Facebook, Amazon, ...
+	* Think of the web apps run by Google, Meta, Amazon, ...
 * The web has changed the requirements for the storage systems of the next generation of applications.
 
 > Q: Which databases have you used in your own projects? Why did you pick them?
@@ -38,7 +38,7 @@ license: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0
 * NoSQL stands for "*Not Only* SQL."
 * *Non-relational*, often *distributed* databases.
 * An alternative to SQL aimed at fast access times and no downtime during failures.
-* Used by large enterprises like Facebook, Google, and Amazon.
+* Used by large enterprises like Meta, Google, and Amazon.
 
 ## SQL vs. NoSQL at a Glance
 
