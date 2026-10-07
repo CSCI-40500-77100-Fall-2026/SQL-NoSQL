@@ -1,10 +1,10 @@
 ---
 title: "SQL vs. NoSQL: Relational vs. Non-Relational Databases"
-author: Raffi Khatchadourian (based on a student presentation from CSCI 40500/77100, Hunter College, Spring 2021)
+author: Raffi Khatchadourian (based on "SQL vs NoSQL" from CSCI 40500/77100, Hunter College, Spring 2021)
 date: Fall 2026
 semester: Fall 2026
 lang: en
-footer: Based on a student presentation, "SQL vs NoSQL", Software Engineering (CSCI 40500/77100), Hunter College, Spring 2021
+footer: Based on "SQL vs NoSQL", Software Engineering (CSCI 40500/77100), Hunter College, Spring 2021
 license: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
 ---
 
