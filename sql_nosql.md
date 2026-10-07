@@ -15,7 +15,6 @@ license: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0
 * Definitions of SQL and NoSQL databases.
 * Comparison.
 * Pros and cons.
-* Performance.
 * Applications.
 * Graph databases.
 * Choosing a database for your project.
@@ -44,7 +43,6 @@ Open-ended. Typical answers: SQLite or PostgreSQL (came with the framework, e.g.
 * NoSQL stands for "*Not Only* SQL."
 * *Non-relational*, often *distributed* databases.
 * An alternative to SQL aimed at fast access times and no downtime during failures.
-* Used by large enterprises like Meta, Google, and Amazon.
 
 ## SQL vs. NoSQL at a Glance
 
@@ -85,7 +83,6 @@ Example adapted from [Couchbase](https://adtmag.com/articles/2016/06/22/couchbas
 	* Wide columns (e.g., Google Bigtable, Apache Cassandra).
 		* Unlike relational tables, rows need not share columns, and one row can have millions of them (e.g., a sensor's row gains a new column for each reading).
 * A NoSQL system may combine two or more of these models.
-* Not *relational* tables: no fixed columns or joins across tables.
 * Schema-less, so very efficient at handling *unstructured* data.
 
 ::: notes
@@ -107,6 +104,7 @@ Key-value vs. document: the difference is whether the database can see *inside* 
 
 * NoSQL databases are designed to scale *horizontally*: add more machines.
 * Traditional SQL databases are not built around this model.
+* Requires *partitioning* (sharding) data across machines, which adds complexity (e.g., queries that span machines).
 
 > *Note*: Relational databases can also scale out, e.g., via sharding (Vitess for MySQL, Citus for PostgreSQL) or distributed SQL databases (Google Spanner, CockroachDB). It is harder than with NoSQL, not impossible.
 
@@ -132,15 +130,6 @@ Key-value vs. document: the difference is whether the database can see *inside* 
 
 > *Note*: Today, managed relational services (e.g., Amazon RDS and Aurora, Google Cloud SQL, Azure SQL Database) are among the most widely used cloud databases. The provider handles replication, failover, backups, and resizing, and some (e.g., Aurora Serverless) grow and shrink capacity on demand.
 
-## Big Data Handling
-
-* Scaling relational databases to big data takes extra effort.
-	* Options: scale up (bigger machine) or scale out (more machines).
-* Horizontal scaling means *partitioning* data across multiple servers.
-	* Adds complexity and performance costs (e.g., queries that span servers).
-* NoSQL databases are *designed* for big data.
-	* They implement methods to improve the performance of storing and retrieving data at scale.
-
 ## Complexity
 
 * In relational databases, users must convert data into tables.
@@ -149,10 +138,6 @@ Key-value vs. document: the difference is whether the database can see *inside* 
 	* Object-Relational Mapping (ORM) libraries (e.g., Hibernate, Django ORM, SQLAlchemy) bridge the gap.
 	* Document databases reduce the mismatch: a document's structure (nested fields, lists) matches an object's.
 		* Object-Document Mappers (ODMs) (e.g., Mongoose) add classes and methods, as ORMs do.
-* NoSQL databases can store data that is:
-	* Unstructured,
-	* Semi-structured, or
-	* Structured.
 
 ::: notes
 ORMs also let you query in terms of classes and fields rather than tables and columns, and translate the query to SQL: e.g., Hibernate's HQL (standardized in JPA as JPQL), `SELECT p FROM Person p JOIN p.employer c WHERE c.name = 'BigCo'`, or Django's `Person.objects.filter(employer__name="BigCo")`. ODMs have the same (e.g., Mongoose's `Person.find({"employer.name": "BigCo"})`), which stays close to MongoDB's own query language because documents already have the objects' shape.
@@ -174,13 +159,6 @@ ORMs also let you query in terms of classes and fields rather than tables and co
 - Who enforces it: the application code ("schema-on-read"). Common tools: ORM/ODM models (e.g., Mongoose), validation libraries, optional database-side validation (e.g., MongoDB JSON Schema validation), tests, and migration scripts that rewrite old documents.
 - Takeaway: there is always a schema; the question is whether the database or the application enforces it.
 :::
-
-## Performance
-
-* Performance of relational databases can degrade with very large datasets unless partitioned or sharded.
-* NoSQL was developed to overcome these performance issues.
-* NoSQL provides high scalability, but historically lacked a standard query language.
-	* One reason it lags behind SQL in number of users.
 
 ## Applications
 
