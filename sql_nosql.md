@@ -80,7 +80,7 @@ Example adapted from [Couchbase](https://adtmag.com/articles/2016/06/22/couchbas
 	* Graphs (e.g., Neo4j).
 	* Wide columns (e.g., Google Bigtable, Apache Cassandra).
 * A NoSQL system may combine two or more of these models.
-* Tables are *not* the storage structure.
+* Not *relational* tables: no fixed columns or joins across tables.
 * Schema-less, so very efficient at handling *unstructured* data.
 
 ## Scalability
