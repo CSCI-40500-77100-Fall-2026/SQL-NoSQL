@@ -17,6 +17,7 @@ license: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0
 * Pros and cons.
 * Performance.
 * Applications.
+* Choosing a database for your project.
 
 ## Why Does This Matter?
 
