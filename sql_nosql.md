@@ -185,6 +185,19 @@ NoSQL databases are well suited for:
 - Reasonable default: start relational and add NoSQL for specific needs (e.g., caching, search, very high write volume).
 :::
 
+## Choosing a Database for Your Project
+
+* Start with the kind of data your application processes:
+	* Tabular, related data (users, orders, enrollments, ...) → relational database (e.g., PostgreSQL, SQLite).
+	* Semi-structured records whose fields vary (e.g., JSON) → consider a document database (e.g., MongoDB).
+	* Highly connected data queried by its relationships (e.g., social networks) → consider a graph database (e.g., Neo4j).
+* Then check how you will query it:
+	* Joins, transactions, or ad hoc queries → lean relational.
+	* Whole records by key at very high scale → lean NoSQL.
+* When unsure, start relational; mixing is common (e.g., PostgreSQL plus Redis for caching).
+
+> Q: What kind of data will your project process? Which database would you choose? Why?
+
 ## Summary
 
 * NoSQL does not use the relational data model, and thus not SQL as its primary language.
