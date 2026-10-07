@@ -83,7 +83,7 @@ Example adapted from [Couchbase](https://adtmag.com/articles/2016/06/22/couchbas
 	* Graphs (e.g., Neo4j).
 		* Nodes connected by typed edges: queries follow relationships.
 	* Wide columns (e.g., Google Bigtable, Apache Cassandra).
-		* Unlike relational tables, rows need not share columns, and one row can have millions of them (e.g., one per timestamp).
+		* Unlike relational tables, rows need not share columns, and one row can have millions of them (e.g., a sensor's row gains a new column for each reading).
 * A NoSQL system may combine two or more of these models.
 * Not *relational* tables: no fixed columns or joins across tables.
 * Schema-less, so very efficient at handling *unstructured* data.
@@ -272,7 +272,7 @@ Adapted from [Holubová](https://www.ksi.mff.cuni.cz/~svoboda/courses/2015-1-NDB
 ### Poor Fit
 
 * Updating a property on all or most entities (e.g., bulk analytics updates).
-* Very large graphs: distributing a graph is hard because edges cross machines (see Scalability).
+* Very large graphs: distributing a graph is hard because edges cross machines (see [Scalability](#scalability)).
 * Simple, tabular data with few relationships: a relational database is simpler.
 
 Adapted from [Holubová](https://www.ksi.mff.cuni.cz/~svoboda/courses/2015-1-NDBI040/lectures/Lecture-10-Graph.pdf).
