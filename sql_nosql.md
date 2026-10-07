@@ -154,6 +154,10 @@ Key-value vs. document: the difference is whether the database can see *inside* 
 	* Semi-structured, or
 	* Structured.
 
+::: notes
+ORMs also let you query in terms of classes and fields rather than tables and columns, and translate the query to SQL: e.g., Hibernate's HQL (standardized in JPA as JPQL), `SELECT p FROM Person p JOIN p.employer c WHERE c.name = 'BigCo'`, or Django's `Person.objects.filter(employer__name="BigCo")`. ODMs have the same (e.g., Mongoose's `Person.find({"employer.name": "BigCo"})`), which stays close to MongoDB's own query language because documents already have the objects' shape.
+:::
+
 ## NoSQL and Agile Development
 
 * NoSQL is often a good fit for Agile development.
