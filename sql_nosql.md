@@ -81,7 +81,9 @@ Example adapted from [Couchbase](https://adtmag.com/articles/2016/06/22/couchbas
 	* Documents (e.g., MongoDB, Couchbase).
 		* Values are structured (e.g., JSON): the database can query and index fields inside them.
 	* Graphs (e.g., Neo4j).
+		* Nodes connected by typed edges: queries follow relationships.
 	* Wide columns (e.g., Google Bigtable, Apache Cassandra).
+		* Unlike relational tables, rows need not share columns, and one row can have millions of them (e.g., one per timestamp).
 * A NoSQL system may combine two or more of these models.
 * Not *relational* tables: no fixed columns or joins across tables.
 * Schema-less, so very efficient at handling *unstructured* data.
