@@ -180,7 +180,7 @@ NoSQL databases are well suited for:
 * Business applications with continuously growing unstructured data.
 * Applications accessed by a large number of users.
 	* E.g., e-commerce websites.
-* Websites with huge and growing data.
+* Websites with very large and growing datasets.
 	* E.g., social media networks (millions of posts daily).
 
 > Q: When would you still choose a relational database?
