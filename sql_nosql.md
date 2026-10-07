@@ -147,7 +147,8 @@ Key-value vs. document: the difference is whether the database can see *inside* 
 * When data does not fit those tables, the database structure can become complex, difficult, and slow to process.
 * Code works with objects, not tables (the *object-relational impedance mismatch*).
 	* Object-Relational Mapping (ORM) libraries (e.g., Hibernate, Django ORM, SQLAlchemy) bridge the gap.
-	* Document databases reduce the mismatch: a document maps directly to an object.
+	* Document databases reduce the mismatch: a document's structure (nested fields, lists) matches an object's.
+		* Object-Document Mappers (ODMs) (e.g., Mongoose) add classes and methods, as ORMs do.
 * NoSQL databases can store data that is:
 	* Unstructured,
 	* Semi-structured, or
