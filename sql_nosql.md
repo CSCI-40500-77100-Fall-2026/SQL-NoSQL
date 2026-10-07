@@ -133,6 +133,8 @@ Example adapted from [Couchbase](https://adtmag.com/articles/2016/06/22/couchbas
 * NoSQL databases are designed to scale *horizontally*: add more machines.
 * Traditional SQL databases are not built around this model.
 
+> *Note*: Relational databases can also scale out, e.g., via sharding (Vitess for MySQL, Citus for PostgreSQL) or distributed SQL databases (Google Spanner, CockroachDB). It is harder than with NoSQL, not impossible.
+
 > Q: What new problems appear once data is spread across many machines?
 
 ## Cloud
@@ -145,7 +147,7 @@ Example adapted from [Couchbase](https://adtmag.com/articles/2016/06/22/couchbas
 
 ## Big Data Handling
 
-* Big data is an issue for relational databases.
+* Scaling relational databases to big data takes extra effort.
 	* The solution is scaling and distributing data, either vertically or horizontally.
 * Horizontal scaling means *partitioning* data across multiple servers.
 	* Adds complexity and performance costs to these operations.
@@ -174,7 +176,7 @@ Example adapted from [Couchbase](https://adtmag.com/articles/2016/06/22/couchbas
 
 ## Performance
 
-* Performance of relational databases can degrade with very large datasets.
+* Performance of relational databases can degrade with very large datasets unless partitioned or sharded.
 * NoSQL was developed to overcome these performance issues.
 * NoSQL provides high scalability, but historically lacked a standard query language.
 	* One reason it lags behind SQL in number of users.
