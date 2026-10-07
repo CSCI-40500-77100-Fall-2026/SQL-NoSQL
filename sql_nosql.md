@@ -112,12 +112,11 @@ Example adapted from [Couchbase](https://adtmag.com/articles/2016/06/22/couchbas
 ## Cloud
 
 * Relational databases were traditionally less suited to cloud environments.
-	* Built to scale *up* on one server; the cloud scales *out* across many machines.
 	* Hard to grow and shrink capacity on demand.
 * NoSQL databases fit cloud databases well.
 	* Their defining characteristics (distribution, flexible schema, horizontal scaling) are exactly what cloud databases need.
 
-> *Note*: Today, managed relational services (e.g., Amazon RDS and Aurora, Google Cloud SQL, Azure SQL Database) are among the most widely used cloud databases.
+> *Note*: Today, managed relational services (e.g., Amazon RDS and Aurora, Google Cloud SQL, Azure SQL Database) are among the most widely used cloud databases. The provider handles replication, failover, backups, and resizing, and some (e.g., Aurora Serverless) grow and shrink capacity on demand.
 
 ## Big Data Handling
 
