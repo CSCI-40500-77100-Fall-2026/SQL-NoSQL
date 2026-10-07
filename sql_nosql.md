@@ -1,10 +1,10 @@
 ---
 title: "SQL vs. NoSQL: Relational vs. Non-Relational Databases"
-author: Raffi Khatchadourian (based on a "SQL vs NoSQL" student presentation from CSCI 40500/77100, City University of New York (CUNY) Hunter College, Spring 2021)
+author: Raffi Khatchadourian (based on a "SQL vs NoSQL" student presentation from CSCI 40500/77100, City University of New York (CUNY) Hunter College, Spring 2021, and on "Graph Databases" by Irena Holubová, Charles University, 2015)
 date: October 7, 2026
 semester: Fall 2026
 lang: en
-footer: Based on a "SQL vs NoSQL" student presentation from Software Engineering (CSCI 40500/77100), City University of New York (CUNY) Hunter College, Spring 2021
+footer: Based on a "SQL vs NoSQL" student presentation from Software Engineering (CSCI 40500/77100), City University of New York (CUNY) Hunter College, Spring 2021, and on "Graph Databases" by Irena Holubová, Charles University, 2015
 license: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
 ---
 
@@ -17,6 +17,7 @@ license: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0
 * Pros and cons.
 * Performance.
 * Applications.
+* Graph databases.
 * Choosing a database for your project.
 
 ## Why Does This Matter?
@@ -186,6 +187,84 @@ NoSQL databases are well suited for:
 - Reasonable default: start relational and add NoSQL for specific needs (e.g., caching, search, very high write volume).
 :::
 
+## Graph Databases
+
+* Store *entities* (nodes) and the *relationships* between them (edges).
+	* Nodes have properties (e.g., `name`).
+	* Edges are directed and have types (e.g., `FRIEND`, `LIKES`, `EMPLOYEE_OF`).
+* Relationships are stored, not computed at query time.
+	* Queries follow edges directly instead of joining tables.
+	* Shifts work from queries to inserts, keeping queries fast.
+* Examples: Neo4j, Amazon Neptune, Memgraph, TigerGraph.
+	* Standard query language: GQL (ISO/IEC 39075, 2024).
+
+Adapted from [Holubová](https://www.ksi.mff.cuni.cz/~svoboda/courses/2015-1-NDBI040/lectures/Lecture-10-Graph.pdf).
+
+## Example: A Social Graph
+
+![A social graph](graphics/social-graph.svg){title="Adapted from Holubová, after Sadalage and Fowler."}
+
+> Q: Who is employed by BigCo and likes *NoSQL Distilled*?
+
+::: notes
+Barbara and Carol (outlined in blue). Anna works at BigCo but likes only *Refactoring*; Dawn likes *NoSQL Distilled* but does not work at BigCo. In a graph database, the query starts at BigCo or the book and follows edges; no joins are needed. The next slide shows the same query in SQL and Cypher.
+:::
+
+## Relational vs. Graph
+
+:::::::::::::: {.columns}
+::: {.column width="50%"}
+
+### SQL
+
+```sql
+SELECT p.name
+FROM people p
+JOIN employment e ON e.person_id = p.id
+JOIN companies c ON c.id = e.company_id
+JOIN likes l ON l.person_id = p.id
+JOIN books b ON b.id = l.book_id
+WHERE c.name = 'BigCo'
+  AND b.title = 'NoSQL Distilled';
+```
+
+:::
+::: {.column width="50%"}
+
+### Cypher (Neo4j)
+
+```cypher
+MATCH (p:Person)-[:EMPLOYEE_OF]->(c),
+      (p)-[:LIKES]->(b)
+WHERE c.name = 'BigCo'
+  AND b.title = 'NoSQL Distilled'
+RETURN p.name;
+```
+
+:::
+::::::::::::::
+
+* A new kind of relationship usually means a new table in a relational schema; in a graph, it is just a new edge type.
+* Deep traversals (e.g., friends of friends of friends) need one join per hop or recursive SQL (`WITH RECURSIVE`); in Cypher, a path pattern: `(p)-[:FRIEND*1..3]->(f)`.
+
+Adapted from [Holubová](https://www.ksi.mff.cuni.cz/~svoboda/courses/2015-1-NDBI040/lectures/Lecture-10-Graph.pdf).
+
+## Graph Databases: When to Use
+
+### Good Fit
+
+* Connected data: social networks, any link-rich domain.
+* Routing and location-based services: nodes are locations, edges are distances.
+* Recommendations: "your friends also bought this product."
+
+### Poor Fit
+
+* Updating a property on all or most entities (e.g., bulk analytics updates).
+* Very large graphs: distributing a graph is hard because edges cross machines (see Scalability).
+* Simple, tabular data with few relationships: a relational database is simpler.
+
+Adapted from [Holubová](https://www.ksi.mff.cuni.cz/~svoboda/courses/2015-1-NDBI040/lectures/Lecture-10-Graph.pdf).
+
 ## Choosing a Database for Your Project
 
 * Start with the kind of data your application processes:
@@ -217,4 +296,6 @@ NoSQL databases are well suited for:
 1. Nayak, A., Poriya, A., & Poojary, D. (2013). Type of NoSQL Databases and Its Comparison with Relational Databases. *International Journal of Applied Information Systems*, 5, 16–19.
 1. Padhy, R. P., Patra, M. R., & Satapathy, S. C. (2011). RDBMS to NoSQL: Reviewing Some Next-Generation Non-Relational Database's. *International Journal of Advanced Engineering Sciences and Technologies*, 11(1), 15–30.
 1. [MongoDB](https://www.mongodb.com/).
+1. Holubová, I. (2015). [Graph Databases](https://www.ksi.mff.cuni.cz/~svoboda/courses/2015-1-NDBI040/lectures/Lecture-10-Graph.pdf). Lecture 10, *Big Data Management and NoSQL Databases* (NDBI040), Charles University.
+1. Sadalage, P. J., & Fowler, M. (2012). *NoSQL Distilled: A Brief Guide to the Emerging World of Polyglot Persistence*. Addison-Wesley.
 1. [Why NoSQL Is the Perfect Fit for Agile Development](https://www.dragonspears.com/blog/why-nosql-is-the-perfect-fit-for-agile-development). DragonSpears.
