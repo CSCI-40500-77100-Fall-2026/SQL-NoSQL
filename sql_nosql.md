@@ -1,10 +1,10 @@
 ---
 title: "SQL vs. NoSQL: Relational vs. Non-Relational Databases"
-author: Raffi Khatchadourian (based on a "[SQL vs NoSQL][sql-nosql]" student presentation from CSCI 40500/77100, City University of New York (CUNY) Hunter College, Spring 2021, and on "[Graph Databases][holubova]" by [Irena Holubová][holubova], Charles University, 2015)
+author: Raffi Khatchadourian (based on a "[SQL vs NoSQL][sql-nosql]" student presentation from CSCI 40500/77100, City University of New York (CUNY) Hunter College, Spring 2021, and on "[Graph Databases][holubova]" by Irena Holubová, Charles University, 2015)
 date: October 7, 2026
 semester: Fall 2026
 lang: en
-footer: Based on a "[SQL vs NoSQL][sql-nosql]" student presentation from Software Engineering (CSCI 40500/77100), City University of New York (CUNY) Hunter College, Spring 2021, and on "[Graph Databases][holubova]" by [Irena Holubová][holubova], Charles University, 2015
+footer: Based on a "[SQL vs NoSQL][sql-nosql]" student presentation from Software Engineering (CSCI 40500/77100), City University of New York (CUNY) Hunter College, Spring 2021, and on "[Graph Databases][holubova]" by Irena Holubová, Charles University, 2015
 license: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
 ---
 
