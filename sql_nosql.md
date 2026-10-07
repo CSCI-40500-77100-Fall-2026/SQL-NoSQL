@@ -27,6 +27,10 @@ license: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0
 
 > Q: Which databases have you used in your own projects? Why did you pick them?
 
+::: notes
+Open-ended. Typical answers: SQLite or PostgreSQL (came with the framework, e.g., Django/Rails), MySQL (hosting default), MongoDB (JSON fits JavaScript stacks), Firebase/Firestore (no backend to run). Point out that most choices are driven by familiarity and tooling, not by data shape or scale; the rest of the lecture gives better criteria.
+:::
+
 ## Definitions
 
 ### SQL Databases
@@ -60,6 +64,13 @@ Example adapted from [Couchbase](https://adtmag.com/articles/2016/06/22/couchbas
 
 > Q: What does each representation make easy? What does each make hard?
 
+::: notes
+- Relational, easy: no duplication (each fact stored once), so updates are simple and consistent; ad hoc queries across entities (e.g., "all users who know Java" or "all companies"); constraints and foreign keys enforce integrity.
+- Relational, hard: reading one user means joining three tables; changing structure needs a schema migration.
+- Document, easy: reading or writing one user is a single lookup with no joins; the document maps directly to objects in code; adding a field needs no migration; easy to shard by user.
+- Document, hard: queries across documents (e.g., "everyone who worked at Red Hat") need extra indexes or scans; duplicated data (e.g., a company's name in many documents) must be updated everywhere; no enforced structure.
+:::
+
 ## Data Model
 
 * NoSQL databases use many modeling techniques:
@@ -86,6 +97,17 @@ Example adapted from [Couchbase](https://adtmag.com/articles/2016/06/22/couchbas
 > *Note*: Relational databases can also scale out, e.g., via sharding (Vitess for MySQL, Citus for PostgreSQL) or distributed SQL databases (Google Spanner, CockroachDB). It is harder than with NoSQL, not impossible.
 
 > Q: What new problems appear once data is spread across many machines?
+
+::: notes
+- Partitioning: choosing a shard key; hot spots; rebalancing when adding machines.
+- Queries across machines: cross-shard joins and aggregations are slow, hence denormalization (as in the JSON example).
+- Transactions: atomic updates across machines need coordination (e.g., two-phase commit), which is slow and blocks on failures.
+- Replication and consistency: replicas lag, so reads may be stale (eventual consistency); concurrent writes can conflict.
+- Partial failures and the CAP theorem: during a network partition, choose consistency or availability, not both.
+- Time and ordering: clocks disagree, so "which write was last?" is hard.
+- Operations: monitoring, backups, upgrades, and debugging get harder.
+- Tie-back: these are the costs of scaling out. NoSQL accepts some (weaker consistency, no joins); distributed SQL (e.g., Spanner) pays to solve them.
+:::
 
 ## Cloud
 
@@ -123,6 +145,12 @@ Example adapted from [Couchbase](https://adtmag.com/articles/2016/06/22/couchbas
 
 > Q: What is the risk of a schema that can change at any time? Who enforces the structure instead?
 
+::: notes
+- Risks: inconsistent records (e.g., `firstName` vs. `first_name`, a field missing or of a different type in old documents); typos silently create new fields; code must handle every historical shape of the data; bugs show up at read time rather than write time.
+- Who enforces it: the application code ("schema-on-read"). Common tools: ORM/ODM models (e.g., Mongoose), validation libraries, optional database-side validation (e.g., MongoDB JSON Schema validation), tests, and migration scripts that rewrite old documents.
+- Takeaway: there is always a schema; the question is whether the database or the application enforces it.
+:::
+
 ## Performance
 
 * Performance of relational databases can degrade with very large datasets unless partitioned or sharded.
@@ -141,6 +169,16 @@ NoSQL databases are well suited for:
 	* E.g., social media networks (millions of posts daily).
 
 > Q: When would you still choose a relational database?
+
+::: notes
+- Data is structured and highly related, with many-to-many relationships and frequent joins.
+- Strong consistency and multi-row transactions are required (e.g., banking, inventory, orders).
+- Integrity must be enforced by the database (constraints, foreign keys).
+- Many ad hoc queries, reporting, or analytics, where SQL shines.
+- Data fits on one machine, or can be scaled with replicas or sharding; that covers most applications.
+- The team knows SQL and the tooling is mature.
+- Reasonable default: start relational and add NoSQL for specific needs (e.g., caching, search, very high write volume).
+:::
 
 ## Summary
 
