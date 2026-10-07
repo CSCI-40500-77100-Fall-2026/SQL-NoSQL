@@ -1,10 +1,10 @@
 ---
 title: "SQL vs. NoSQL: Relational vs. Non-Relational Databases"
-author: Raffi Khatchadourian (based on "SQL vs NoSQL" from CSCI 40500/77100, Hunter College, Spring 2021)
+author: Raffi Khatchadourian (based on a student presentation from CSCI 40500/77100, Hunter College, Spring 2021)
 date: Fall 2026
 semester: Fall 2026
 lang: en
-footer: Based on "SQL vs NoSQL", Software Engineering (CSCI 40500/77100), Hunter College, Spring 2021
+footer: Based on a student presentation, "SQL vs NoSQL", Software Engineering (CSCI 40500/77100), Hunter College, Spring 2021
 license: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
 ---
 
@@ -17,7 +17,6 @@ license: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0
 * Pros and cons.
 * Performance.
 * Applications.
-* Demo.
 
 ## Why Does This Matter?
 
@@ -191,34 +190,6 @@ NoSQL databases are well suited for:
 	* E.g., social media networks (millions of posts daily).
 
 > Q: When would you still choose a relational database?
-
-## Demo
-
-### SQL
-
-```sql
-CREATE TABLE users (id INT PRIMARY KEY, first VARCHAR(50), last VARCHAR(50));
-CREATE TABLE user_skills (user_id INT REFERENCES users(id), skill VARCHAR(50));
-
-INSERT INTO users VALUES (1, 'Shane', 'Johnson');
-INSERT INTO user_skills VALUES (1, 'Big Data'), (1, 'Java'), (1, 'NoSQL');
-
-SELECT u.first, u.last
-FROM users u JOIN user_skills s ON u.id = s.user_id
-WHERE s.skill = 'Java';
-```
-
-### NoSQL (MongoDB)
-
-```javascript
-db.users.insertOne({
-  firstName: "Shane",
-  lastName: "Johnson",
-  skills: ["Big Data", "Java", "NoSQL"]
-});
-
-db.users.find({ skills: "Java" }, { firstName: 1, lastName: 1 });
-```
 
 ## Summary
 
