@@ -84,6 +84,14 @@ Example adapted from [Couchbase](https://adtmag.com/articles/2016/06/22/couchbas
 * Not *relational* tables: no fixed columns or joins across tables.
 * Schema-less, so very efficient at handling *unstructured* data.
 
+::: notes
+Key-value vs. document: the difference is whether the database can see *inside* the value.
+
+- Key-value: the value is opaque to the database; only `get`, `put`, and `delete` by key. E.g., `user:1 → {...}` can be fetched by key, but "all users who know Java" means reading every value yourself. Very fast and simple: caches, sessions, shopping carts (e.g., Redis, DynamoDB).
+- Document: the value is a structured document (JSON, or BSON in MongoDB) that the database understands, so fields inside it can be queried and indexed (`db.users.find({skills: "Java"})`) and updated individually. Suits records like the Shane example (e.g., MongoDB, Couchbase).
+- In short, a document store is a key-value store whose values the database can query. The line is blurry: DynamoDB supports both styles, and Redis can store and query JSON with a module.
+:::
+
 ## Scalability
 
 ### Vertical Scaling (Scale Up)
