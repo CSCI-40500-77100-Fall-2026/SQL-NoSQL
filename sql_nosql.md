@@ -1,10 +1,10 @@
 ---
 title: "SQL vs. NoSQL: Relational vs. Non-Relational Databases"
-author: Raffi Khatchadourian (based on a "SQL vs NoSQL" student presentation from CSCI 40500/77100, City University of New York (CUNY) Hunter College, Spring 2021, and on "Graph Databases" by Irena Holubová, Charles University, 2015)
+author: Raffi Khatchadourian (based on a "[SQL vs NoSQL](https://s3.amazonaws.com/files.commons.gc.cuny.edu/wp-content/blogs.dir/2880/files/2021/05/SQL_NoSQL.pdf)" student presentation from CSCI 40500/77100, City University of New York (CUNY) Hunter College, Spring 2021, and on "[Graph Databases](https://www.ksi.mff.cuni.cz/~svoboda/courses/2015-1-NDBI040/lectures/Lecture-10-Graph.pdf)" by [Irena Holubová](https://www.ksi.mff.cuni.cz/~svoboda/courses/2015-1-NDBI040/lectures/Lecture-10-Graph.pdf), Charles University, 2015)
 date: October 7, 2026
 semester: Fall 2026
 lang: en
-footer: Based on a "SQL vs NoSQL" student presentation from Software Engineering (CSCI 40500/77100), City University of New York (CUNY) Hunter College, Spring 2021, and on "Graph Databases" by Irena Holubová, Charles University, 2015
+footer: Based on a "[SQL vs NoSQL](https://s3.amazonaws.com/files.commons.gc.cuny.edu/wp-content/blogs.dir/2880/files/2021/05/SQL_NoSQL.pdf)" student presentation from Software Engineering (CSCI 40500/77100), City University of New York (CUNY) Hunter College, Spring 2021, and on "[Graph Databases](https://www.ksi.mff.cuni.cz/~svoboda/courses/2015-1-NDBI040/lectures/Lecture-10-Graph.pdf)" by [Irena Holubová](https://www.ksi.mff.cuni.cz/~svoboda/courses/2015-1-NDBI040/lectures/Lecture-10-Graph.pdf), Charles University, 2015
 license: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
 ---
 
@@ -215,6 +215,8 @@ Adapted from [Holubová](https://www.ksi.mff.cuni.cz/~svoboda/courses/2015-1-NDB
 ## Example: A Social Graph
 
 ![A social graph](graphics/social-graph.svg){title="Adapted from Holubová, after Sadalage and Fowler."}
+
+Example adapted from [Holubová](https://www.ksi.mff.cuni.cz/~svoboda/courses/2015-1-NDBI040/lectures/Lecture-10-Graph.pdf), after Sadalage and Fowler's *NoSQL Distilled*.
 
 > Q: Who is employed by BigCo and likes *NoSQL Distilled*?
 
