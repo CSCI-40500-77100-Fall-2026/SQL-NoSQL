@@ -91,7 +91,6 @@ Example adapted from [Couchbase](https://adtmag.com/articles/2016/06/22/couchbas
 
 * Relational databases are less suited to cloud environments.
 	* Hard to scale beyond a limit.
-	* Weak support for full-text content search.
 * NoSQL databases fit cloud databases well.
 	* Their defining characteristics (distribution, flexible schema, horizontal scaling) are exactly what cloud databases need.
 
