@@ -77,7 +77,9 @@ Example adapted from [Couchbase](https://adtmag.com/articles/2016/06/22/couchbas
 
 * NoSQL databases use many modeling techniques:
 	* Key-value pairs (e.g., Redis, Amazon DynamoDB).
+		* Values are opaque to the database: look them up only by key.
 	* Documents (e.g., MongoDB, Couchbase).
+		* Values are structured (e.g., JSON): the database can query and index fields inside them.
 	* Graphs (e.g., Neo4j).
 	* Wide columns (e.g., Google Bigtable, Apache Cassandra).
 * A NoSQL system may combine two or more of these models.
